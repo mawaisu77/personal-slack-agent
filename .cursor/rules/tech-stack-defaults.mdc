@@ -1,0 +1,21 @@
+---
+description: Default stack for this project unless the user specifies otherwise
+alwaysApply: true
+---
+
+# Tech stack defaults
+
+Unless overridden in chat or repo docs:
+
+| Layer | Choice |
+|-------|--------|
+| Backend | Python (FastAPI) |
+| Queue | Redis |
+| Database | PostgreSQL |
+| Automation | Playwright |
+| AI | Claude API (tool use + reasoning) |
+| Voice | Vapi (fallback: Twilio) |
+| Object storage | AWS S3 (or S3-compatible) |
+| Secrets | AWS Secrets Manager |
+
+Align new services and dependencies with these defaults when adding infrastructure.

@@ -1,0 +1,29 @@
+---
+description: Autonomous agent loop, task lifecycle, errors, and resumption
+alwaysApply: true
+---
+
+# AI agent behavior
+
+- Decompose tasks into steps; maintain execution state across steps.
+- Use an iterative loop: **plan → act → observe → repeat**.
+- Handle uncertainty by asking for clarification; never assume missing data.
+
+## Agent loop (web-oriented)
+
+1. Capture state (DOM, screenshot, context).
+2. Decide next action (AI + tools).
+3. Execute.
+4. Validate outcome.
+5. Repeat until goal or checkpoint.
+
+## Task lifecycle (persist in DB)
+
+States: `pending` → `running` → `waiting_for_approval` → `completed` | `failed`
+
+Support: **resume** after interruption, **cancellation**, **retry**.
+
+## Error handling (non-negotiable)
+
+- Try/catch (or equivalent) around external I/O; **retry with backoff**; explicit **timeouts**.
+- On failure: log, capture screenshot for web tasks when useful, notify user with clear next steps.

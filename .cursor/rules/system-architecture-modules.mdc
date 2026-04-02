@@ -1,0 +1,23 @@
+---
+description: Modular service boundaries for the Personal AI Assistant (orchestrator, agents, Slack, state)
+alwaysApply: true
+---
+
+# System architecture
+
+Design as **separate services/modules** with clear separation of concerns. Avoid monolithic files.
+
+## Required conceptual modules
+
+| Module | Responsibility |
+|--------|------------------|
+| **Orchestrator** | Task manager; routes work to agents |
+| **Web Automation Agent** | Playwright-based browser tasks |
+| **Voice Agent** | Vapi (fallback: Twilio) for real calls |
+| **Slack Interface** | Commands, async replies, approvals |
+| **Context Store** | User/session data |
+| **Task State Manager** | Status and lifecycle (persisted) |
+| **Approval System** | Human-in-the-loop gates |
+| **Logging & Observability** | Timestamped actions, traces, debuggability |
+
+New code should map to these boundaries unless the user specifies a different structure.

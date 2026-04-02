@@ -1,0 +1,23 @@
+---
+description: Slack commands, human approvals, async tasks, and voice agent behavior
+alwaysApply: true
+---
+
+# Slack interface
+
+Support (or design toward): `/do` (web automation), `/call` (voice), `/status`, `/cancel`, `/history`.
+
+- Use **interactive buttons** for approve/reject.
+- **Async responses** for long work; **progress updates** for tasks longer than ~30 seconds.
+
+## Human-in-the-loop (mandatory)
+
+Pause and require approval **before**: payments, form submissions, or other **irreversible** actions.
+
+Approval Slack message should include: **screenshot** (when relevant), **action summary**, **clear approve/reject** actions. Execution **must pause** until approval.
+
+# Voice agent
+
+- Structured call objectives; maintain conversation context; handle interruptions.
+- Deliver **transcript + summary** after calls.
+- On failure: clear explanation and suggested fallback (e.g. retry, different channel).

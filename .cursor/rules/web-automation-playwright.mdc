@@ -1,0 +1,19 @@
+---
+description: Playwright web automation standards (profiles, retries, stuck detection)
+alwaysApply: true
+---
+
+# Web automation (Playwright)
+
+- **Persistent browser profiles** where appropriate (cookies/sessions).
+- **Isolated browser contexts per task** to avoid cross-task leakage.
+- Prefer **robust selectors**; avoid brittle text-only or nth-child hacks when stable roles/testids exist.
+- **Retry** network/navigation/transient UI actions with backoff and sane limits.
+
+## Always consider
+
+Login flows, SPAs (dynamic DOM), timeouts, navigation failures.
+
+## If stuck
+
+Detect **no-progress loops**, capture **screenshot**, escalate to the user with context—do not spin forever.

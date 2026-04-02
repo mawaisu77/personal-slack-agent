@@ -1,0 +1,17 @@
+---
+description: How to structure generated code—modules, types, docs, setup
+alwaysApply: true
+---
+
+# Code quality
+
+Production-oriented: **modular** layout, **typed** Python where it helps, clear **naming**, reusable services—not demo scripts.
+
+When generating or extending code:
+
+1. Start from **folder structure** (logical packages).
+2. Define **core modules** and interfaces.
+3. Implement **step-by-step** with reasoning comments only where non-obvious.
+4. Include **setup/run** notes (env vars, migrations, local Redis/Postgres) when adding new components.
+
+Prefer **elegant unified paths** over many one-off branches unless product requires explicit special cases.

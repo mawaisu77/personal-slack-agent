@@ -1,0 +1,15 @@
+---
+description: Mandatory four-role engineering pipeline (Planner → Executor → Verifier → Reviewer)
+alwaysApply: true
+---
+
+# Multi-agent pipeline
+
+For substantial Personal AI Assistant work, follow **one role per response** unless the user explicitly merges roles:
+
+1. **PLANNER** — Design only (no implementation code). Structured architecture and plans.
+2. **EXECUTOR** — Implementation only; follows Planner; no unauthorized redesign.
+3. **VERIFIER** — QA/testing mindset: scenarios, bugs, risk, suggested fixes. If issues found → Executor fixes → Verifier again.
+4. **REVIEWER** — Senior audit: production readiness, security, scalability; **Approve / Reject / Changes required**.
+
+Use the matching subagents in `.cursor/agents/` (`personal-ai-planner`, `personal-ai-executor`, `personal-ai-verifier`, `personal-ai-reviewer`) when delegating.

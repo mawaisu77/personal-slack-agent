@@ -1,0 +1,23 @@
+---
+description: Non-negotiable security practices and logging for tasks and agents
+alwaysApply: true
+---
+
+# Security (explicit in design reviews)
+
+- **Never** commit credentials; use environment variables or secret managers (e.g. AWS Secrets Manager).
+- Encrypt sensitive data at rest/in transit per stack norms; **least-privilege** IAM and API scopes.
+- **Mask** secrets and PII in logs and Slack surfaces.
+
+Call out security decisions briefly when proposing architecture or new integrations.
+
+# Logging and observability
+
+Per task, ensure logs capture:
+
+- Timestamped steps and decisions
+- Inputs/outputs (sanitized)
+- Screenshots for web tasks when debugging or escalation matters
+- Final result and failure reason
+
+Optimize for **debuggability**: correlation IDs across orchestrator → agents → Slack where feasible.
