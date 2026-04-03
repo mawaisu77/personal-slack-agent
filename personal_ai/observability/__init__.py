@@ -1,3 +1,4 @@
+from personal_ai.observability.ai_logging import log_ai_io, redact_text, redact_value
 from personal_ai.observability.context import (
     bind_context,
     clear_context,
@@ -7,6 +8,7 @@ from personal_ai.observability.context import (
     task_context,
 )
 from personal_ai.observability.logging import configure_logging, get_logger
+from personal_ai.observability.replay_store import ReplayTraceStore
 
 __all__ = [
     "bind_context",
@@ -16,5 +18,9 @@ __all__ = [
     "get_logger",
     "get_task_id",
     "get_user_id",
+    "log_ai_io",
+    "redact_text",
+    "redact_value",
+    "ReplayTraceStore",
     "task_context",
 ]

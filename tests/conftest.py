@@ -1,5 +1,18 @@
 import pytest
 
+from personal_ai.observability.logging import configure_logging
+
+
+@pytest.fixture(autouse=True)
+def reset_logging() -> None:
+    """
+    Keep structlog bound to a live stdout per test.
+    Some tests switch JSON console mode, which otherwise leaks PrintLogger state.
+    """
+    configure_logging(json_logs=False)
+    yield
+    configure_logging(json_logs=False)
+
 
 @pytest.fixture
 def slack_app_env(monkeypatch: pytest.MonkeyPatch) -> None:

@@ -1,0 +1,10 @@
+{
+  "action_types": ["click", "type"],
+  "target_regex": [
+    "(checkout|payment|submit|purchase|place-order)",
+    "#(submit|confirm)"
+  ],
+  "reason_regex": [
+    "(pay|purchase|submit|checkout|irreversible)"
+  ]
+}

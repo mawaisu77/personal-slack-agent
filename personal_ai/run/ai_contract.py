@@ -19,10 +19,11 @@ _ACTION_SCHEMA: dict[str, Any] = {
             "type": "string",
             "enum": ["click", "type", "scroll", "wait", "extract"],
         },
-        "target": {"type": "string", "minLength": 1},
+        "target": {"type": "string", "minLength": 0},
         "value": {"type": "string"},
         "confidence": {"type": "number", "minimum": 0, "maximum": 1},
         "reason": {"type": "string", "minLength": 1},
+        "requires_approval": {"type": "boolean"},
     },
     "additionalProperties": False,
 }
@@ -35,6 +36,10 @@ AI_RESPONSE_SCHEMA: dict[str, Any] = {
     "properties": {
         "reasoning": {"type": "string", "minLength": 1},
         "action": _ACTION_SCHEMA,
+        "goal_reached": {
+            "type": "boolean",
+            "description": "If true after this action, stop successfully.",
+        },
     },
     "additionalProperties": False,
 }

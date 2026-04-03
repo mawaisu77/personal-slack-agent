@@ -39,6 +39,9 @@ packages = ["personal_ai"]
 testpaths = ["tests"]
 pythonpath = ["."]
 addopts = "-q"
+markers = [
+    "integration: tests that need Playwright browsers or similar (opt-in via env).",
+]
 
 [tool.ruff]
 line-length = 100

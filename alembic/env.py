@@ -10,7 +10,9 @@ from alembic import context
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
+from personal_ai.approvals import audit as _approval_audit_models  # noqa: F401
 from personal_ai.config.settings import get_settings
+from personal_ai.context_store import models as _context_models  # noqa: F401
 from personal_ai.db.base import Base
 from personal_ai.observability.logging import configure_logging, get_logger
 from personal_ai.state import models as _state_models  # noqa: F401

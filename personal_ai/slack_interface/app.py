@@ -6,6 +6,10 @@ from slack_bolt.async_app import AsyncApp
 
 from personal_ai.config.secrets import get_secret
 from personal_ai.observability.logging import get_logger
+from personal_ai.slack_interface.approval_interactive import register_approval_handlers
+from personal_ai.slack_interface.call_command import register_call_command
+from personal_ai.slack_interface.do_command import register_do_command
+from personal_ai.slack_interface.query_commands import register_query_commands
 
 log = get_logger(__name__)
 
@@ -27,6 +31,11 @@ def create_app() -> FastAPI:
     @slack_app.event("message")
     async def _on_message(_, ack) -> None:
         await ack()
+
+    register_do_command(slack_app)
+    register_call_command(slack_app)
+    register_query_commands(slack_app)
+    register_approval_handlers(slack_app)
 
     handler = AsyncSlackRequestHandler(slack_app)
     api = FastAPI(title="Personal AI Assistant — Slack gateway")
